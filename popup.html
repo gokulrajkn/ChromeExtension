@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+  <html>
+    <head><center><b>To Do List</b></center>
+      <style>
+          div {
+            display: flex;
+            justify-content: space-between;  
+            }
+            .del-button {
+            background: url("del4.png") left center no-repeat;
+            padding-left: 15px;
+            border: none;
+            width: 10px;
+            height:10px;
+        }
+.lmask {
+  position: absolute;
+  height: 100%;
+  width: 100%; 
+  background-color: #000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;;
+  opacity: 0.4;
+  &.fixed {
+    position: fixed;
+  }
+  &:before {
+    content: '';
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,183,229,0.9);
+    opacity: .9;
+    border-right: 5px solid rgba(0,0,0,0);
+    border-left: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 35px #2187e7;
+    width: 50px;
+    height: 50px;
+    -moz-animation: spinPulse 1s infinite ease-in-out;
+    -webkit-animation: spinPulse 1s infinite linear;
+
+    margin: -25px 0 0 -25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  &:after {
+    content: '';
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,183,229,0.9);
+    opacity: .9;
+    border-left: 5px solid rgba(0,0,0,0);
+    border-right: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 15px #2187e7;
+    width: 30px;
+    height: 30px;
+    -moz-animation: spinoffPulse 1s infinite linear;
+    -webkit-animation: spinoffPulse 1s infinite linear;
+
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@-moz-keyframes spinPulse {
+  0% {
+    -moz-transform:rotate(160deg);
+    opacity: 0;
+    box-shadow: 0 0 1px #2187e7;
+  }
+  50% {
+    -moz-transform: rotate(145deg);
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: rotate(-320deg);
+    opacity: 0;
+  }
+}
+@-moz-keyframes spinoffPulse {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinPulse {
+  0% {
+    -webkit-transform: rotate(160deg);
+    opacity: 0;
+    box-shadow: 0 0 1px #2187e7;
+  }
+  50% {
+    -webkit-transform: rotate(145deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-320deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes spinoffPulse {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.collapsible {
+  margin-top:10px;
+  margin-left:6px;
+  background-color: #999;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  width: 98%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 12px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  margin-top:5px;
+  margin-left:6px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+      </style>
+    </head>
+    <body bgcolor=#d9dbdd>
+<script src="popup.js"></script>
+<div id="taskpanel">
+<table id="taskpaneltable"></table>
+</div>
+</br>
+<div>
+      &ensp;<input type="text"  name="addnewtask" id="addnewtask_txtfield" size="32px" placeholder="Add new task..">
+      &ensp;&ensp;&ensp;&ensp;&ensp;<button type="button" id="commonaddbtn">Add</button>
+</div>
+<button class="collapsible" id="doneTaskButton">Done Tasks</button>
+<div class="content">
+<table id="doneTaskTable"></table>
+</div>
+    </body>
+  </html>
